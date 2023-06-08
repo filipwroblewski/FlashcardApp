@@ -19,12 +19,40 @@ class FlashcardModel {
 
     public function getRandomFlashcard() {
         $query = "SELECT f.*, c.name AS category
-                  FROM flashcards f
-                  LEFT JOIN categories c ON f.id_category = c.id
-                  ORDER BY RAND() LIMIT 1";
+            FROM flashcards f
+            LEFT JOIN categories c ON f.id_category = c.id
+            WHERE f.seen = FALSE
+            ORDER BY RAND() LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function markFlashcardAsSeen($flashcardId) {
+        $query = "UPDATE flashcards SET seen = TRUE WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $flashcardId);
+        return $stmt->execute();
+    }
+
+    public function resetFlashcardsSeenStatus() {
+        $query = "UPDATE flashcards SET seen = FALSE";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute();
+    }
+
+    public function getAllFlashcardsCount() {
+        $query = "SELECT COUNT(*) FROM flashcards";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+    
+    public function getSeenFlashcardsCount() {
+        $query = "SELECT COUNT(*) FROM flashcards WHERE seen = 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchColumn();
     }
 
     public function addToFavorites($flashcardId) {

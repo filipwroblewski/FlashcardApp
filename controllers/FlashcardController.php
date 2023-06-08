@@ -4,13 +4,20 @@ require_once '../models/FlashcardModel.php';
 class FlashcardController {
     public function displayRandomFlashcard() {
         $flashcardModel = new FlashcardModel();
+
+        // Handle reset button action
+        if (isset($_POST['resetSeen'])) {
+            $flashcardModel->resetFlashcardsSeenStatus();
+        }
+        
         $randomFlashcard = $flashcardModel->getRandomFlashcard();
 
         if ($randomFlashcard) {
-            require '../views/flashcardView.php';
-        } else {
-            echo "No flashcards available.";
+            // Mark the flashcard as seen
+            $flashcardModel->markFlashcardAsSeen($randomFlashcard['id']);
         }
+
+        require '../views/flashcardView.php';
     }
 
     public function addToFavorites($flashcardId) {
