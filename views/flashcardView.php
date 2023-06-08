@@ -14,7 +14,7 @@
             <p>Czy ulubione: <?php echo ($randomFlashcard['favourite'] ? 'Tak' : 'Nie'); ?></p>
         </div>
     <?php else: ?>
-        <p>No flashcards available.</p>
+        <p>Brak dostępnych fiszek.</p>
     <?php endif; ?>
 </body>
 </html>
