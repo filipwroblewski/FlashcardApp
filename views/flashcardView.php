@@ -6,6 +6,11 @@
 </head>
 <body>
     <h1>Fiszki</h1>
+
+    <form action="./" method="POST">
+        <button type="submit">Wylosuj kolejną fiszkę</button>
+    </form>
+
     <h2>Wylosowana fiszka:</h2>
     <?php if ($randomFlashcard): ?>
         <div>
@@ -22,7 +27,8 @@
                 </div>
             </div>
         </div>
-       
+
+        
     <?php else: ?>
         <p>Brak dostępnych fiszek.</p>
     <?php endif; ?>
