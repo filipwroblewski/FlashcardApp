@@ -79,6 +79,10 @@ INSERT INTO categories (id, name)
 VALUES (2, 'Znane osoby');
 ```
 
+```sql
+ALTER TABLE flashcards ADD COLUMN seen BOOLEAN DEFAULT FALSE;
+```
+
 ___
 
 ## Set Up SCSS
