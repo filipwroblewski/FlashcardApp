@@ -9,9 +9,12 @@ class FlashcardModel {
     }
 
     public function getAllFlashcards() {
-        $query = "SELECT * FROM flashcards";
+        $query = "SELECT f.*, c.name AS category
+                FROM flashcards f
+                LEFT JOIN categories c ON f.id_category = c.id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }

@@ -10,7 +10,7 @@
         <div>
             <h3>Przód: <?php echo $flashcard['name']; ?></h3>
             <p>Tył: <?php echo $flashcard['description']; ?></p>
-            <p>Kategoria: <?php echo $flashcard['id_category']; ?></p>
+            <p>Kategoria: <?php echo $flashcard['category']; ?></p>
             <p>Czy ulubione: <?php echo ($flashcard['favourite'] ? 'Tak' : 'Nie'); ?></p>
         </div>
     <?php endforeach; ?>
