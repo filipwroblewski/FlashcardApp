@@ -7,12 +7,19 @@
 <body>
     <h1>Fiszki</h1>
 
-    <form action="./" method="POST">
-        <button type="submit">Wylosuj kolejną fiszkę</button>
-    </form>
+    <?php
+        $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
+        $seenFlashcardsCount = $flashcardModel->getSeenFlashcardsCount();
 
-    <h2>Wylosowana fiszka:</h2>
+        echo "<p>Liczba widzianych fiszek: (${seenFlashcardsCount}/${allFlashcardsCount})</p>";
+    ?>
+
     <?php if ($randomFlashcard): ?>
+        <form action="./" method="POST">
+            <button type="submit">Wylosuj kolejną fiszkę</button>
+        </form>
+
+        <h2>Wylosowana fiszka:</h2>
         <div>
             <p>Kategoria: <?php echo $randomFlashcard['category']; ?></p>
             <p>Czy ulubione:
@@ -33,10 +40,13 @@
                 </div>
             </div>
         </div>
-
         
     <?php else: ?>
-        <p>Brak dostępnych fiszek.</p>
+        <p>Brak dostępnych fiszek!</p>
+
+        <form action="./" method="POST">
+            <button type="submit" name="resetSeen">Resetuj zestaw</button>
+        </form>
     <?php endif; ?>
 </body>
 </html>
