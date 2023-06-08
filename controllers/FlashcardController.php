@@ -2,12 +2,19 @@
 require_once '../models/FlashcardModel.php';
 
 class FlashcardController {
-    public function displayFlashcards() {
+    public function displayRandomFlashcard() {
         $flashcardModel = new FlashcardModel();
-        $flashcards = $flashcardModel->getAllFlashcards();
-        require '../views/flashcardView.php';
+        $randomFlashcard = $flashcardModel->getRandomFlashcard();
+
+        if ($randomFlashcard) {
+            require '../views/flashcardView.php';
+        } else {
+            echo "No flashcards available.";
+        }
     }
 }
 
+
 $flashcardController = new FlashcardController();
-$flashcardController->displayFlashcards();
+$flashcardController->displayRandomFlashcard();
+

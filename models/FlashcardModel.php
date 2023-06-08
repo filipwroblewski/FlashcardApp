@@ -17,4 +17,13 @@ class FlashcardModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getRandomFlashcard() {
+        $query = "SELECT f.*, c.name AS category
+                  FROM flashcards f
+                  LEFT JOIN categories c ON f.id_category = c.id
+                  ORDER BY RAND() LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
