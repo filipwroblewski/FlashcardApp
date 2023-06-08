@@ -15,7 +15,13 @@
     <?php if ($randomFlashcard): ?>
         <div>
             <p>Kategoria: <?php echo $randomFlashcard['category']; ?></p>
-            <p>Czy ulubione: <?php echo ($randomFlashcard['favourite'] ? 'Tak' : 'Nie'); ?></p>
+            <p>Czy ulubione:
+            <?php if ($randomFlashcard['favourite']): ?>
+                <a href="?remove_favorite=<?php echo $randomFlashcard['id']; ?>">Usuń z ulubionych</a>
+            <?php else: ?>
+                <a href="?add_favorite=<?php echo $randomFlashcard['id']; ?>">Dodaj do ulubionych</a>
+            <?php endif; ?>
+        </p>
         </div>
         <div class="flashcard">
             <div class="card">
