@@ -5,14 +5,16 @@
 </head>
 <body>
     <h1>Fiszki</h1>
-    <h2>Wszystkie fiszki:</h2>
-    <?php foreach ($flashcards as $flashcard): ?>
+    <h2>Wylosowana fiszka:</h2>
+    <?php if ($randomFlashcard): ?>
         <div>
-            <h3>Przód: <?php echo $flashcard['name']; ?></h3>
-            <p>Tył: <?php echo $flashcard['description']; ?></p>
-            <p>Kategoria: <?php echo $flashcard['category']; ?></p>
-            <p>Czy ulubione: <?php echo ($flashcard['favourite'] ? 'Tak' : 'Nie'); ?></p>
+            <h3>Przód: <?php echo $randomFlashcard['name']; ?></h3>
+            <p>Tył: <?php echo $randomFlashcard['description']; ?></p>
+            <p>Kategoria: <?php echo $randomFlashcard['category']; ?></p>
+            <p>Czy ulubione: <?php echo ($randomFlashcard['favourite'] ? 'Tak' : 'Nie'); ?></p>
         </div>
-    <?php endforeach; ?>
+    <?php else: ?>
+        <p>No flashcards available.</p>
+    <?php endif; ?>
 </body>
 </html>
