@@ -12,9 +12,18 @@ class FlashcardController {
             echo "No flashcards available.";
         }
     }
+
+    public function addToFavorites($flashcardId) {
+        $flashcardModel = new FlashcardModel();
+        $flashcardModel->addToFavorites($flashcardId);
+        
+        echo "<script>alert('Dodano do ulubionych');</script>";
+    }
+
+    public function removeFromFavorites($flashcardId) {
+        $flashcardModel = new FlashcardModel();
+        $flashcardModel->removeFromFavorites($flashcardId);
+        
+        echo "<script>alert('Usunięto z ulubionych');</script>";
+    }
 }
-
-
-$flashcardController = new FlashcardController();
-$flashcardController->displayRandomFlashcard();
-
