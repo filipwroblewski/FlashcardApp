@@ -17,16 +17,26 @@ class FlashcardModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getRandomFlashcard() {
+    public function getRandomFlashcard($category = null) {
         $query = "SELECT f.*, c.name AS category
             FROM flashcards f
             LEFT JOIN categories c ON f.id_category = c.id
-            WHERE f.seen = FALSE
-            ORDER BY RAND() LIMIT 1";
+            WHERE f.seen = FALSE";
+    
+        if (!empty($category)) {
+            $query .= " AND (f.id_category = :category OR :category = '')";
+        }
+    
         $stmt = $this->conn->prepare($query);
+    
+        if (!empty($category)) {
+            $stmt->bindParam(':category', $category);
+        }
+    
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
 
     public function markFlashcardAsSeen($flashcardId) {
         $query = "UPDATE flashcards SET seen = TRUE WHERE id = :id";
