@@ -1,1 +1,5 @@
+# Ignore Database configuration file
 /config/database.php
+
+# Ignore the node_modules directory
+node_modules/

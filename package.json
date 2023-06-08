@@ -1,0 +1,19 @@
+{
+  "name": "flashcardapp",
+  "version": "1.0.0",
+  "description": "```\r FlashcardApp\r ├───config\r ├───controllers\r ├───models\r ├───public\r │   └───css\r ├───scss\r └───views\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0"
+  },
+  "dependencies": {
+    "sass": "^1.63.2"
+  }
+}

@@ -8,6 +8,8 @@ FlashcardApp
 ├───controllers
 ├───models
 ├───public
+│   └───css
+├───scss
 └───views
 ```
 
@@ -71,4 +73,28 @@ VALUES (1, 'Wydarzenia historyczne');
 
 INSERT INTO categories (id, name)
 VALUES (2, 'Znane osoby');
+```
+
+## Set Up SCSS
+
+### Download and Install
+
+Download [Node.js](https://nodejs.org/)
+
+```
+npm init -y
+```
+
+```
+npm install gulp gulp-sass --save-dev
+```
+
+```
+npm install sass
+```
+
+### Transpiling SCSS to CSS
+
+```
+gulp
 ```
