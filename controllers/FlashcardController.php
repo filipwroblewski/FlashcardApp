@@ -4,6 +4,7 @@ require_once '../models/FlashcardModel.php';
 class FlashcardController {
     public function displayRandomFlashcard() {
         $flashcardModel = new FlashcardModel();
+        $categoryModel = new CategoryModel();
 
         // Handle reset button action
         if (isset($_POST['resetSeen'])) {
@@ -11,6 +12,7 @@ class FlashcardController {
         }
         
         $randomFlashcard = $flashcardModel->getRandomFlashcard();
+        $categories = $categoryModel->getAllCategories();
 
         if ($randomFlashcard) {
             // Mark the flashcard as seen

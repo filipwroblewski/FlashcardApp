@@ -7,6 +7,19 @@
 <body>
     <h1>Fiszki</h1>
 
+    <form action="./" method="POST">
+        <label for="category">Wybierz kategorię:</label>
+        <select name="category" id="category">
+            <option value="">Wszystkie</option>
+            <?php foreach ($categories as $category): ?>
+                <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit">Zmień kategorię</button>
+    </form>
+
+
+
     <?php
         $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
         $seenFlashcardsCount = $flashcardModel->getSeenFlashcardsCount();
