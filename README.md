@@ -39,6 +39,11 @@ CREATE TABLE categories (
   name VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE flashcard_stats (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  date DATE,
+  seen_flashcards_quantity INT
+);
 ```
 
 ### Database connection
