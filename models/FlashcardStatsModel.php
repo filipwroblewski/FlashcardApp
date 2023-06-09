@@ -33,4 +33,14 @@ class FlashcardStatsModel
         $stmt->bindParam(':date', $date);
         $stmt->execute();
     }
+
+    public function getDailyStats()
+    {
+        $sql = "SELECT seen_flashcards_quantity FROM flashcard_stats WHERE date = CURRENT_DATE();";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['seen_flashcards_quantity'];
+    }
+
 }
