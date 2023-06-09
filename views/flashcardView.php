@@ -24,8 +24,10 @@
 <body>
     <h1>Fiszki</h1>
 
+    <h5>Dziś przejrzane (<?php echo $dailyQuantityNumber; ?>)</h5>
+
     <div>
-    <h3>Zmień kolor tła strony</h3>
+        <h3>Zmień kolor tła strony</h3>
         <input type="color" id="colorInput">
         <button onclick="changeBodyColor()">Zastosuj</button>
     </div>

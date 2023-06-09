@@ -1,5 +1,7 @@
 <?php
 require_once '../models/FlashcardModel.php';
+require_once '../controllers/FlashcardStatsController.php';
+
 
 class FlashcardController {
     public function displayRandomFlashcard() {
@@ -24,7 +26,15 @@ class FlashcardController {
         if ($randomFlashcard) {
             // Mark the flashcard as seen
             $flashcardModel->markFlashcardAsSeen($randomFlashcard['id']);
-        }
+
+            // Update flashcard stats
+            $flashcardStatsController = new FlashcardStatsController();
+            $flashcardStatsController->updateFlashcardStats();
+
+            // Get the seen flashcards quantity for the current day
+            $flashcardStatsModel = new FlashcardStatsModel();
+            $dailyQuantityNumber = $flashcardStatsModel->getDailyStats();
+        } 
 
         // Check if the flashcard was added/removed from favorites
         if (isset($_POST['addFavorite'])) {
