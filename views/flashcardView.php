@@ -7,18 +7,7 @@
 <body>
     <h1>Fiszki</h1>
 
-    <form action="./" method="POST">
-        <label for="category">Wybierz kategorię:</label>
-        <select name="category" id="category">
-            <option value="">Wszystkie</option>
-            <?php foreach ($categories as $category): ?>
-                <option value="<?php echo $category['id']; ?>" <?php if ($selectedCategory == $category['id']) echo 'selected'; ?>>
-                    <?php echo $category['name']; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <button type="submit">Zmień kategorię</button>
-    </form>
+    
 
 
 
@@ -31,10 +20,17 @@
 
     <?php if ($randomFlashcard): ?>
         <form action="./" method="POST">
-            <input type="hidden" name="selectedCategory" value="<?php echo $selectedCategory; ?>">
+            <label for="category">Wybrana kategoria:</label>
+            <select name="category" id="category">
+                <option value="">Wszystkie</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo $category['id']; ?>" <?php if ($selectedCategory == $category['id']) echo 'selected'; ?>>
+                        <?php echo $category['name']; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
             <button type="submit">Wylosuj kolejną fiszkę</button>
         </form>
-
 
         <h2>Wylosowana fiszka:</h2>
         <div>
