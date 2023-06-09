@@ -25,23 +25,35 @@ class FlashcardController {
             // Mark the flashcard as seen
             $flashcardModel->markFlashcardAsSeen($randomFlashcard['id']);
         }
+
+        // Check if the flashcard was added/removed from favorites
+        if (isset($_POST['addFavorite'])) {
+            $flashcardId = $_POST['flashcardId'];
+            $this->addToFavorites($flashcardId);
+        } elseif (isset($_POST['removeFavorite'])) {
+            $flashcardId = $_POST['flashcardId'];
+            $this->removeFromFavorites($flashcardId);
+        }
     
         require '../views/flashcardView.php';
     }
 
-    public function addToFavorites($flashcardId) {
-        $flashcardModel = new FlashcardModel();
-        $flashcardModel->addToFavorites($flashcardId);
-        
-        echo "<script>alert('Dodano do ulubionych');</script>";
+    public function addToFavorites() {
+        if (isset($_POST['flashcardId'])) {
+            $flashcardId = $_POST['flashcardId'];
+            $flashcardModel = new FlashcardModel();
+            $flashcardModel->addToFavorites($flashcardId);
+        }
     }
-
-    public function removeFromFavorites($flashcardId) {
-        $flashcardModel = new FlashcardModel();
-        $flashcardModel->removeFromFavorites($flashcardId);
-        
-        echo "<script>alert('Usunięto z ulubionych');</script>";
+    
+    public function removeFromFavorites() {
+        if (isset($_POST['flashcardId'])) {
+            $flashcardId = $_POST['flashcardId'];
+            $flashcardModel = new FlashcardModel();
+            $flashcardModel->removeFromFavorites($flashcardId);
+        }
     }
+    
 
     public function showAvailableFlashcards() {
         $flashcardModel = new FlashcardModel();

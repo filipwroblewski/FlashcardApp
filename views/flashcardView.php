@@ -34,13 +34,19 @@
         <h2>Wylosowana fiszka:</h2>
         <div>
             <p>Kategoria: <?php echo $randomFlashcard['category']; ?></p>
-            <p>Czy ulubione:
+
             <?php if ($randomFlashcard['favourite']): ?>
-                <a href="?remove_favorite=<?php echo $randomFlashcard['id']; ?>">Usuń z ulubionych</a>
+                <form action="" method="POST">
+                    <input type="hidden" name="flashcardId" value="<?php echo $randomFlashcard['id']; ?>">
+                    <input type="submit" name="removeFavorite" value="Usuń z ulubionych">
+                </form>
             <?php else: ?>
-                <a href="?add_favorite=<?php echo $randomFlashcard['id']; ?>">Dodaj do ulubionych</a>
+                <form action="" method="POST">
+                    <input type="hidden" name="flashcardId" value="<?php echo $randomFlashcard['id']; ?>">
+                    <input type="submit" name="addFavorite" value="Dodaj do ulubionych">
+                </form>
             <?php endif; ?>
-        </p>
+
         </div>
         <div class="flashcard">
             <div class="card">
