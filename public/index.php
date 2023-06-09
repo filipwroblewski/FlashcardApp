@@ -16,4 +16,13 @@ if (isset($_GET['remove_favorite'])) {
     $flashcardController->removeFromFavorites($flashcardId);
 }
 
-$flashcardController->displayRandomFlashcard();
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+
+switch ($action) {
+    case 'showAvailableFlashcards':
+        $flashcardController->showAvailableFlashcards();
+        break;
+    default:
+        $flashcardController->displayRandomFlashcard();
+        break;
+}
