@@ -7,6 +7,10 @@
 <body>
     <h1>Fiszki</h1>
 
+    
+
+
+
     <?php
         $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
         $seenFlashcardsCount = $flashcardModel->getSeenFlashcardsCount();
@@ -16,6 +20,16 @@
 
     <?php if ($randomFlashcard): ?>
         <form action="./" method="POST">
+            <label for="category">Wybrana kategoria:</label>
+            <select name="category" id="category">
+                <option value="">Wszystkie</option>
+                <option value="favourites" <?php if ($selectedCategory === 'favourites') echo 'selected'; ?>>Ulubione</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo $category['id']; ?>" <?php if ($selectedCategory == $category['id']) echo 'selected'; ?>>
+                        <?php echo $category['name']; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
             <button type="submit">Wylosuj kolejną fiszkę</button>
         </form>
 

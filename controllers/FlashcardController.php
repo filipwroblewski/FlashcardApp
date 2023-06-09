@@ -4,21 +4,31 @@ require_once '../models/FlashcardModel.php';
 class FlashcardController {
     public function displayRandomFlashcard() {
         $flashcardModel = new FlashcardModel();
-
+        $categoryModel = new CategoryModel();
+    
         // Handle reset button action
         if (isset($_POST['resetSeen'])) {
             $flashcardModel->resetFlashcardsSeenStatus();
         }
-        
-        $randomFlashcard = $flashcardModel->getRandomFlashcard();
-
+    
+        $selectedCategory = isset($_POST['category']) ? $_POST['category'] : '';
+    
+        if ($selectedCategory === 'favourites') {
+            $randomFlashcard = $flashcardModel->getRandomFavoriteFlashcard();
+        } else {
+            $randomFlashcard = $flashcardModel->getRandomFlashcard($selectedCategory);
+        }
+    
+        $categories = $categoryModel->getAllCategories();
+    
         if ($randomFlashcard) {
             // Mark the flashcard as seen
             $flashcardModel->markFlashcardAsSeen($randomFlashcard['id']);
         }
-
+    
         require '../views/flashcardView.php';
     }
+    
 
     public function addToFavorites($flashcardId) {
         $flashcardModel = new FlashcardModel();
