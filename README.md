@@ -127,14 +127,11 @@ Adding new feature branch based on develop branch
 git checkout -b feature/feature-name develop
 ```
 
-You can make changes (also you can repeat 1, 2, 3, 4)
+You can make changes (also you can repeat 1, 2, 3)
   1.  ```
       git add .
       ```
   2.  ```
-      git commit -m "Implement feature-name"
-      ```
-  3.  ```
       git commit -m "Implement feature-name"
       ```
   3.  ```
@@ -153,3 +150,33 @@ git push origin develop
 ```
 
 Now you can start from Adding New Feature
+
+### Adding Something to feature/existing-feature-brnach
+
+```
+git checkout feature/existing-feature-brnach
+```
+```
+git merge develop
+```
+You can make changes (also you can repeat 1, 2, 3, 4)
+  1.  ```
+      git add .
+      ```
+  2.  ```
+      git commit -m "Implement feature-name"
+      ```
+  3.  ```
+      git push origin feature/existing-feature-brnach
+      ```
+
+When you are done with feature. 
+```
+git checkout develop
+```
+```
+git merge --no-ff feature/feature-name
+```
+```
+git push origin develop
+```
