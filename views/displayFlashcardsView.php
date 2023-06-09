@@ -17,5 +17,7 @@
     <?php else: ?>
         <p>Brak dostępnych fiszek.</p>
     <?php endif; ?>
+
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Powrót</a>
 </body>
 </html>
