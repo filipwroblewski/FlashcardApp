@@ -46,6 +46,7 @@ class FlashcardController {
     public function showAvailableFlashcards() {
         $flashcardModel = new FlashcardModel();
         $flashcards = $flashcardModel->getAllFlashcards();
+        $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
 
         require '../views/displayFlashcardsView.php';
     }

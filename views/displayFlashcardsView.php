@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Wszystkie fiszki</h1>
+    <?php echo "<h3>Ilość wszystkich fiszek: ${allFlashcardsCount}</h3>"; ?>
 
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Powrót</a>
 
