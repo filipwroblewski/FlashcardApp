@@ -3,9 +3,32 @@
 <head>
     <title>Fiszki | Strona główna</title>
     <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+
+    <script>
+        function changeBodyColor() {
+            var color = document.getElementById('colorInput').value;
+            document.body.style.backgroundColor = color;
+
+            sessionStorage.setItem('bodyColor', color);
+        }
+
+        window.onload = function() {
+            var savedColor = sessionStorage.getItem('bodyColor');
+            if (savedColor) {
+                document.body.style.backgroundColor = savedColor;
+                document.getElementById('colorInput').value = savedColor;
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Fiszki</h1>
+
+    <div>
+    <h3>Zmień kolor tła strony</h3>
+        <input type="color" id="colorInput">
+        <button onclick="changeBodyColor()">Zastosuj</button>
+    </div>
 
     <?php
         $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
