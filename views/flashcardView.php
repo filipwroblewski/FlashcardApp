@@ -8,6 +8,16 @@
         function changeBodyColor() {
             var color = document.getElementById('colorInput').value;
             document.body.style.backgroundColor = color;
+
+            sessionStorage.setItem('bodyColor', color);
+        }
+
+        window.onload = function() {
+            var savedColor = sessionStorage.getItem('bodyColor');
+            if (savedColor) {
+                document.body.style.backgroundColor = savedColor;
+                document.getElementById('colorInput').value = savedColor;
+            }
         }
     </script>
 </head>
