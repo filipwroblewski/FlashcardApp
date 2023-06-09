@@ -44,6 +44,10 @@ class FlashcardController {
     }
 
     public function showAvailableFlashcards() {
+        $flashcardModel = new FlashcardModel();
+        $flashcards = $flashcardModel->getAllFlashcards();
+
         require '../views/displayFlashcardsView.php';
     }
+    
 }

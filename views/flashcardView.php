@@ -14,7 +14,7 @@
         echo "<p>Liczba widzianych fiszek: (${seenFlashcardsCount}/${allFlashcardsCount})</p>";
     ?>
 
-    <a href="../views/displayFlashcardsView.php">Zobacz dostępne fiszki</a>
+    <a href="index.php?action=showAvailableFlashcards">Zobacz dostępne fiszki</a>
 
     <?php if ($randomFlashcard): ?>
         <form action="./" method="POST">
