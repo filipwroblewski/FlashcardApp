@@ -89,5 +89,10 @@
             <button type="submit" name="resetSeen">Resetuj zestaw</button>
         </form>
     <?php endif; ?>
+
+    <footer>
+        <p>Jeśli chcesz się z nami skontaktować pisz śmaiło!</p>
+        <a href="mailto:fiszki-contact@gmail.com">Napisz do nas</a>
+    </footer>
 </body>
 </html>
