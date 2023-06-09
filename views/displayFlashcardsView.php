@@ -10,7 +10,12 @@
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Powrót</a>
 
     <?php if (!empty($flashcards)): ?>
+        <?php $currentCategory = ''; ?>
         <?php foreach ($flashcards as $flashcard): ?>
+            <?php if ($flashcard['category'] !== $currentCategory): ?>
+                <h2>Kategoria: <?php echo $flashcard['category']; ?></h2>
+                <?php $currentCategory = $flashcard['category']; ?>
+            <?php endif; ?>
             <div class="flashcard">
                 <h3><?php echo $flashcard['name']; ?></h3>
                 <p>Kategoria: <?php echo $flashcard['category']; ?></p>
