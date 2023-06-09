@@ -2,17 +2,16 @@
 require '../controllers/FlashcardController.php';
 require '../controllers/CategoryController.php';
 
-
 $flashcardController = new FlashcardController();
 $categoryController = new CategoryController();
 
-if (isset($_GET['add_favorite'])) {
-    $flashcardId = $_GET['add_favorite'];
+if (isset($_POST['addFavorite'])) {
+    $flashcardId = $_POST['flashcardId'];
     $flashcardController->addToFavorites($flashcardId);
 }
 
-if (isset($_GET['remove_favorite'])) {
-    $flashcardId = $_GET['remove_favorite'];
+if (isset($_POST['removeFavorite'])) {
+    $flashcardId = $_POST['flashcardId'];
     $flashcardController->removeFromFavorites($flashcardId);
 }
 
