@@ -13,7 +13,12 @@ class FlashcardController {
     
         $selectedCategory = isset($_POST['category']) ? $_POST['category'] : '';
     
-        $randomFlashcard = $flashcardModel->getRandomFlashcard($selectedCategory);
+        if ($selectedCategory === 'favourites') {
+            $randomFlashcard = $flashcardModel->getRandomFavoriteFlashcard();
+        } else {
+            $randomFlashcard = $flashcardModel->getRandomFlashcard($selectedCategory);
+        }
+    
         $categories = $categoryModel->getAllCategories();
     
         if ($randomFlashcard) {
@@ -23,6 +28,7 @@ class FlashcardController {
     
         require '../views/flashcardView.php';
     }
+    
 
     public function addToFavorites($flashcardId) {
         $flashcardModel = new FlashcardModel();

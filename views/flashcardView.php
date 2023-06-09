@@ -23,6 +23,7 @@
             <label for="category">Wybrana kategoria:</label>
             <select name="category" id="category">
                 <option value="">Wszystkie</option>
+                <option value="favourites" <?php if ($selectedCategory === 'favourites') echo 'selected'; ?>>Ulubione</option>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo $category['id']; ?>" <?php if ($selectedCategory == $category['id']) echo 'selected'; ?>>
                         <?php echo $category['name']; ?>
