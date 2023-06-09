@@ -7,16 +7,14 @@
 <body>
     <h1>Fiszki</h1>
 
-    
-
-
-
     <?php
         $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
         $seenFlashcardsCount = $flashcardModel->getSeenFlashcardsCount();
 
         echo "<p>Liczba widzianych fiszek: (${seenFlashcardsCount}/${allFlashcardsCount})</p>";
     ?>
+
+    <a href="index.php?action=showAvailableFlashcards">Zobacz dostępne fiszki</a>
 
     <?php if ($randomFlashcard): ?>
         <form action="./" method="POST">

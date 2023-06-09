@@ -14,8 +14,11 @@ class FlashcardModel {
                 LEFT JOIN categories c ON f.id_category = c.id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $flashcards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $flashcards;
     }
+    
 
     public function getRandomFlashcard($category = null) {
         $query = "SELECT f.*, c.name AS category

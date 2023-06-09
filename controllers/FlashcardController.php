@@ -28,7 +28,6 @@ class FlashcardController {
     
         require '../views/flashcardView.php';
     }
-    
 
     public function addToFavorites($flashcardId) {
         $flashcardModel = new FlashcardModel();
@@ -43,4 +42,13 @@ class FlashcardController {
         
         echo "<script>alert('Usunięto z ulubionych');</script>";
     }
+
+    public function showAvailableFlashcards() {
+        $flashcardModel = new FlashcardModel();
+        $flashcards = $flashcardModel->getAllFlashcards();
+        $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
+
+        require '../views/displayFlashcardsView.php';
+    }
+    
 }
