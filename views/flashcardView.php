@@ -19,12 +19,27 @@
                 document.getElementById('colorInput').value = savedColor;
             }
         }
+
+        function displayElapsedTime() {
+            var startTime = localStorage.getItem('startTime');
+            if (startTime) {
+                var endTime = Date.now();
+                var elapsedTime = Math.floor((endTime - startTime) / 1000);
+                var minutes = Math.floor(elapsedTime / 60);
+                var seconds = elapsedTime % 60;
+                var previousSessionElement = document.getElementById('previousSession');
+                previousSessionElement.innerHTML = 'Poprzednia sesja trwała: ' + minutes + ' minut ' + seconds + ' sekund';
+            }
+        }
     </script>
 </head>
 <body>
     <h1>Fiszki</h1>
 
-    <h5>Dziś przejrzane (<?php echo $dailyQuantityNumber; ?>)</h5>
+    <?php if (isset($dailyQuantityNumber)): ?>
+        <h5>Dziś przejrzane (<?php echo $dailyQuantityNumber; ?>)</h5>
+    <?php endif; ?>
+    <p id="previousSession"></p>
 
     <div>
         <h3>Zmień kolor tła strony</h3>
@@ -90,11 +105,21 @@
         <form action="./" method="POST">
             <button type="submit" name="resetSeen">Resetuj zestaw</button>
         </form>
+
+        
     <?php endif; ?>
 
     <footer>
         <p>Jeśli chcesz się z nami skontaktować pisz śmaiło!</p>
         <a href="mailto:fiszki-contact@gmail.com">Napisz do nas</a>
     </footer>
+
+    <script>
+        if (!localStorage.getItem('startTime')) {
+            localStorage.setItem('startTime', Date.now());
+        }
+
+        displayElapsedTime();
+    </script>
 </body>
 </html>
