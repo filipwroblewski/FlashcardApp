@@ -9,28 +9,20 @@
 
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Powrót</a>
 
-    <?php if (!empty($flashcards)): ?>
-        <?php $currentCategory = ''; ?>
-        <?php $categoryCount = 0; ?>
-        <?php foreach ($flashcards as $flashcard): ?>
-            <?php if ($flashcard['category'] !== $currentCategory): ?>
-                <?php if ($currentCategory !== ''): ?>
-                    <h4>Ilość elementów: <?php echo $categoryCount; ?></h4>
-                <?php endif; ?>
-                <h2>Kategoria: <?php echo $flashcard['category']; ?></h2>
-                <?php $currentCategory = $flashcard['category']; ?>
-                <?php $categoryCount = 0; ?>
-            <?php endif; ?>
-            <div class="flashcard">
-                <h3><?php echo $flashcard['name']; ?></h3>
-                <p>Kategoria: <?php echo $flashcard['category']; ?></p>
-                <p>Opis: <?php echo $flashcard['description']; ?></p>
-                <p>Czy ulubione: <?php echo $flashcard['favourite'] ? 'Tak' : 'Nie'; ?></p>
-                <p>Czy widziana: <?php echo $flashcard['seen'] ? 'Tak' : 'Nie'; ?></p>
-            </div>
-            <?php $categoryCount++; ?>
+    <?php if (!empty($groupedFlashcards)): ?>
+        <?php foreach ($groupedFlashcards as $category => $flashcardsInCategory): ?>
+            <h2>Kategoria: <?php echo $category; ?></h2>
+            <?php foreach ($flashcardsInCategory as $flashcard): ?>
+                <div class="flashcard">
+                    <h3><?php echo $flashcard['name']; ?></h3>
+                    <p>Kategoria: <?php echo $flashcard['category']; ?></p>
+                    <p>Opis: <?php echo $flashcard['description']; ?></p>
+                    <p>Czy ulubione: <?php echo $flashcard['favourite'] ? 'Tak' : 'Nie'; ?></p>
+                    <p>Czy widziana: <?php echo $flashcard['seen'] ? 'Tak' : 'Nie'; ?></p>
+                </div>
+            <?php endforeach; ?>
+            <h4>Ilość elementów: <?php echo count($flashcardsInCategory); ?></h4>
         <?php endforeach; ?>
-        <h4>Ilość elementów: <?php echo $categoryCount; ?></h4>
     <?php else: ?>
         <p>Brak dostępnych fiszek.</p>
     <?php endif; ?>
