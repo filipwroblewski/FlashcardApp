@@ -55,6 +55,7 @@
     ?>
 
     <a href="index.php?action=showAvailableFlashcards">Zobacz dostępne fiszki</a>
+    <a href="index.php?action=addFlashcard">Dodaj nową fiszkę</a>
 
     <?php if ($randomFlashcard): ?>
         <form action="./" method="POST">

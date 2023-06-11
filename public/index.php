@@ -21,6 +21,9 @@ switch ($action) {
     case 'showAvailableFlashcards':
         $flashcardController->showAvailableFlashcards();
         break;
+    case 'addFlashcard':
+        $flashcardController->addFlashcard();
+        break;
     default:
         $flashcardController->displayRandomFlashcard();
         break;
