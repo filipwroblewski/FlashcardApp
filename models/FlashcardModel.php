@@ -94,4 +94,18 @@ class FlashcardModel {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function addFlashcard($category, $name, $description)
+    {
+        $query = "INSERT INTO flashcards (name, description, id_category, favourite) 
+                VALUES (:name, :description, :id_category, :favourite)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':description', $description);
+        $stmt->bindValue(':id_category', $category);
+        $stmt->bindValue(':favourite', 0);
+        return $stmt->execute();
+    }
+
+
 }

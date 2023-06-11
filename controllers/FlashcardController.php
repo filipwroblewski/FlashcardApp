@@ -1,6 +1,7 @@
 <?php
 require_once '../models/FlashcardModel.php';
 require_once '../controllers/FlashcardStatsController.php';
+require_once '../models/CategoryModel.php';
 
 
 class FlashcardController {
@@ -72,5 +73,24 @@ class FlashcardController {
 
         require '../views/displayFlashcardsView.php';
     }
+
+    public function addFlashcard() {
+        $flashcardModel = new FlashcardModel();
+        $categoryModel = new CategoryModel();
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $category = $_POST['category'];
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+    
+            $flashcardModel->addFlashcard($category, $name, $description);
+    
+            header('Location: index.php');
+            exit();
+        }
+    
+        require '../views/addFlashcardView.php';
+    }
+    
     
 }
