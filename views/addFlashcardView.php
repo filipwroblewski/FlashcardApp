@@ -10,7 +10,13 @@
 
     <form action="index.php?action=addFlashcard" method="POST">
         <label for="category">Kategoria:</label>
-        <input type="number" name="category" id="category">
+        <select name="category" id="category">
+            <?php
+                foreach ($categories as $category) {
+                    echo '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
+                }
+            ?>
+        </select>
 
         <label for="name">Przód fiszki:</label>
         <input type="text" name="name" id="name">
@@ -20,7 +26,6 @@
 
         <button type="submit">Dodaj fiszkę</button>
     </form>
-
 
 </body>
 </html>

@@ -77,7 +77,9 @@ class FlashcardController {
     public function addFlashcard() {
         $flashcardModel = new FlashcardModel();
         $categoryModel = new CategoryModel();
-    
+
+        $categories = $categoryModel->getAllCategories();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $category = $_POST['category'];
             $name = $_POST['name'];
