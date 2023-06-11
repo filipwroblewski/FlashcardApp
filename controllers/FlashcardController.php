@@ -71,6 +71,15 @@ class FlashcardController {
         $flashcards = $flashcardModel->getAllFlashcards();
         $allFlashcardsCount = $flashcardModel->getAllFlashcardsCount();
 
+        $groupedFlashcards = [];
+        foreach ($flashcards as $flashcard) {
+            $category = $flashcard['category'];
+            if (!isset($groupedFlashcards[$category])) {
+                $groupedFlashcards[$category] = [];
+            }
+            $groupedFlashcards[$category][] = $flashcard;
+        }
+
         require '../views/displayFlashcardsView.php';
     }
 
