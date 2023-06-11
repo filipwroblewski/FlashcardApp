@@ -12,13 +12,13 @@
         <label for="category">Kategoria:</label>
         <input type="number" name="category" id="category">
 
-        <label for="name">Name:</label>
+        <label for="name">Przód fiszki:</label>
         <input type="text" name="name" id="name">
 
-        <label for="description">Description:</label>
+        <label for="description">Tył fiszki:</label>
         <textarea name="description" id="description"></textarea>
 
-        <button type="submit">Add Flashcard</button>
+        <button type="submit">Dodaj fiszkę</button>
     </form>
 
 
